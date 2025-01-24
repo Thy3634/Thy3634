@@ -36,18 +36,6 @@ jobs:
         run: pnpm install
       - name: Build project
         run: pnpm build
-      - name: Verify dist directory
-        run: |
-          if [ ! -d "dist" ]; then
-            echo "Error: dist directory does not exist."
-            exit 1
-          fi
-
-  deploy:
-    # Add a dependency to the build job
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
