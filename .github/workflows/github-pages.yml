@@ -34,6 +34,13 @@ jobs:
         run: npm install -g pnpm
       - name: Install dependencies
         run: pnpm install
+      - name: build
+        run: pnpm build
+  deploy:
+    # Add a dependency to the build job
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Build
@@ -42,10 +49,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: './dist'
-          name: github-pages
       - name: Deploy
         uses: actions/deploy-pages@v4
-        with:
-          artifact_name: github-pages
         id: deployment
       
