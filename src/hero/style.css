@@ -1,0 +1,15 @@
+#hero {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+#hero article {
+    margin-right: 2rem;
+}
+
+#noisy-sphere {
+    height: 100%;
+    aspect-ratio: 1;
+}
