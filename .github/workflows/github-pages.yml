@@ -34,8 +34,15 @@ jobs:
         run: npm install -g pnpm
       - name: Install dependencies
         run: pnpm install
-      - name: build
+      - name: Build project
         run: pnpm build
+      - name: Verify dist directory
+        run: |
+          if [ ! -d "dist" ]; then
+            echo "Error: dist directory does not exist."
+            exit 1
+          fi
+
   deploy:
     # Add a dependency to the build job
     needs: build
@@ -50,4 +57,3 @@ jobs:
       - name: Deploy
         uses: actions/deploy-pages@v4
         id: deployment
-      
